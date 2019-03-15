@@ -15,13 +15,15 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.NumberPicker;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 
 public class RoomActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener  {
         FirebaseAuth firebaseAuth;
-        private Button btnopenanotheractivity;
+        private Button btnOpenAnotherActivity;
+        private Button btn_Refresh;
 
 
     @Override
@@ -33,9 +35,16 @@ public class RoomActivity extends AppCompatActivity
 
 
         firebaseAuth=FirebaseAuth.getInstance();
+        btn_Refresh=(Button)findViewById(R.id.btn_refresh);
+        btn_Refresh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(RoomActivity.this, "STATUS WILL BE REFRESHED", Toast.LENGTH_SHORT).show();
+            }
+        });
 
-        btnopenanotheractivity=(Button)findViewById(R.id.Btn_open_another_room);
-        btnopenanotheractivity.setOnClickListener(new View.OnClickListener() {
+        btnOpenAnotherActivity=(Button)findViewById(R.id.Btn_open_another_room);
+        btnOpenAnotherActivity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(),OpenAnotherRoomActivity.class));
