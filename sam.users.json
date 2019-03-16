@@ -1,0 +1,29 @@
+{
+	"_id" : ObjectId("5c8bf8ca26ea27af22fedb71"),
+	"first_name" : "mohit",
+	"last_name" : "mude",
+	"room_status" : 0,
+	"ip_address":192.168.172.1
+},
+{
+	"_id" : ObjectId("7hui9g8iuo8j0hibu353g443g"),
+	"first_name" : "yashwant",
+	"last_name" : "sandey",
+	"room_status" : 0,
+	"ip_address":192.168.172.2
+},
+{
+	"_id" : ObjectId("9w89e8jrj08f8203023hfjfd0"),
+	"first_name" : "samruddha",
+	"last_name" : "patil",
+	"room_status" : 0,
+	"ip_address": 192.168.172.3
+},
+
+{
+	"_id" : ObjectId("bju76567uhuh7y8988878ybh"),
+	"first_name" : "rahul",
+	"last_name" : "kedia",
+	"room_status" : 0,
+	"ip_address":192.168.172.4
+},
