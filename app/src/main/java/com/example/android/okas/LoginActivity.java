@@ -15,14 +15,17 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
-
-    private Button buttonsignin;
+    //private EditText edtxtLoginLocalPart;
+    //private EditText edtextLoginDomain;
     private EditText edtxtemail;
+    private Button buttonsignin;
     private EditText edtxtpassword;
     private TextView txtviewsignup;
     private FirebaseAuth firebaseAuth;
+     FirebaseDatabase firebaseDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +33,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_login);
 
         buttonsignin=(Button)findViewById(R.id.Btn_Signin);
-        edtxtemail=(EditText)findViewById(R.id.Edtext_loginemail);
+       // edtxtLoginLocalPart=(EditText)findViewById(R.id.Edtext_login_local_part);
+        //edtextLoginDomain=(EditText)findViewById(R.id.Edtext_login_domain);
+        edtxtemail=(EditText)findViewById(R.id.Edtxt_login_email);
         edtxtpassword=(EditText)findViewById(R.id.Edtext_loginpassword);
         txtviewsignup=(TextView) findViewById(R.id.Text_signup);
         firebaseAuth=FirebaseAuth.getInstance();
@@ -42,12 +47,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
         buttonsignin.setOnClickListener(this);
         txtviewsignup.setOnClickListener(this);
+
+
     }
 
     private void userlogin()
     {
-        String email=(String)edtxtemail.getText().toString().trim();
+        //String email=(String)edtxtLoginLocalPart.getText().toString().trim()+"@"+edtextLoginDomain.getText().toString().trim()+"iitism.com";
         String password=(String)edtxtpassword.getText().toString().trim();
+        String email=(String)edtxtemail.getText().toString().trim();
         if (TextUtils.isEmpty(email))
         {
             Toast.makeText(this, "Email field cannot be blank", Toast.LENGTH_SHORT).show();
