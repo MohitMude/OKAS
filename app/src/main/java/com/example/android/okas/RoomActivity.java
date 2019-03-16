@@ -1,6 +1,7 @@
 package com.example.android.okas;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -15,8 +16,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.NumberPicker;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.android.okas.NodeMcu.NodeMcuController;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class RoomActivity extends AppCompatActivity
@@ -24,6 +27,10 @@ public class RoomActivity extends AppCompatActivity
         FirebaseAuth firebaseAuth;
         private Button btnOpenAnotherActivity;
         private Button btn_Refresh;
+        private Button changeStatus;
+        NodeMcuController nodeMcuController;
+        TextView textViewStatus;
+    String s="/off";
 
 
     @Override
@@ -32,7 +39,12 @@ public class RoomActivity extends AppCompatActivity
         setContentView(R.layout.activity_room);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        changeStatus=findViewById(R.id.btn_change_status);
+        textViewStatus=findViewById(R.id.txtview_status);
+        nodeMcuController=new NodeMcuController();
 
+        SharedPreferences sharedPreferences=getSharedPreferences("Node_ip",MODE_PRIVATE);
+        final String ip=sharedPreferences.getString("ip_key",null);
 
         firebaseAuth=FirebaseAuth.getInstance();
         btn_Refresh=(Button)findViewById(R.id.btn_refresh);
@@ -48,6 +60,19 @@ public class RoomActivity extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(),OpenAnotherRoomActivity.class));
+            }
+        });
+
+        changeStatus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if(s=="/off")
+                    s="/on";
+                else
+                    s="/off";
+                nodeMcuController.StatusChange(s,ip);
+
             }
         });
 

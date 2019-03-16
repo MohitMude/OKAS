@@ -2,6 +2,7 @@ package com.example.android.okas;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -34,9 +35,16 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         firebaseAuth=FirebaseAuth.getInstance();
         if(firebaseAuth.getCurrentUser()!=null)
         {
+
+            SharedPreferences sharedPreferences=getSharedPreferences("Node_ip",MODE_PRIVATE);
+            sharedPreferences.edit().clear().commit();
+            sharedPreferences.edit().putString("ip_key","192.168.43,69");
             finish();
             startActivity(new Intent(this,RoomActivity.class));
         }
+
+
+
         progressDialog=new ProgressDialog(this);
         Btn_login=(Button)findViewById(R.id.Btn_login);
         Edtext_email=(EditText)findViewById(R.id.Edtext_email);

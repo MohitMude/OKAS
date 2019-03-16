@@ -1,6 +1,7 @@
 package com.example.android.okas;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -34,6 +35,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         edtxtpassword=(EditText)findViewById(R.id.Edtext_loginpassword);
         txtviewsignup=(TextView) findViewById(R.id.Text_signup);
         firebaseAuth=FirebaseAuth.getInstance();
+
         if(firebaseAuth.getCurrentUser() != null)
         {
             //start profile activity
@@ -82,6 +84,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
         else if(v==txtviewsignup)
         {
+            SharedPreferences sharedPreferences=getSharedPreferences("Node_ip",MODE_PRIVATE);
+            sharedPreferences.edit().clear().commit();
+            sharedPreferences.edit().putString("ip_key","192.168.43.69");
             finish();
             startActivity(new Intent(this, SignUpActivity.class));
         }
