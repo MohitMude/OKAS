@@ -7,7 +7,14 @@
     tools:context=".OpenAnotherRoomActivity"
     android:orientation="vertical">
 
-    <LinearLayout
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_gravity="center_horizontal"
+    >
+    <NumberPicker
+        android:id="@+id/picker1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -47,9 +54,60 @@
     </LinearLayout>
 
     <Button
+        android:id="@+id/btn_see_owners_of_room"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:text="@string/see_owners_of_room"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/send_notification_to"
+        android:id="@+id/txtview_send_notification_to"
+        android:layout_marginTop="40dp"
+        android:layout_gravity="center_horizontal"/>
+
+    <RelativeLayout
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_gravity="center_horizontal"
+       android:layout_marginTop="10dp">
+    <TextView
+        android:id="@+id/txtview_owner1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1"
+        android:textSize="24sp"
+        />
+
+       <TextView
+           android:id="@+id/txtview_owner2"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_below="@+id/txtview_owner1"
+           android:text="2"
+           android:textSize="24sp"
+           />
+       <android.support.v7.widget.AppCompatCheckBox
+           android:id="@+id/checkbox_owner1"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_toRightOf="@+id/txtview_owner1"/>
+       <android.support.v7.widget.AppCompatCheckBox
+           android:id="@+id/checkbox_owner2"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_toRightOf="@+id/txtview_owner2"
+           android:layout_below="@+id/checkbox_owner1"/>
+
+   </RelativeLayout>
+    <Button
         android:id="@+id/Btn_send_notification_to_owner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+
         android:layout_alignEnd="@+id/null"
         android:layout_alignBottom="@+id/null"
         android:layout_alignParentStart="true"
@@ -61,3 +119,6 @@
         android:text="Send notification to owner" />
 
 </RelativeLayout>
+
+</LinearLayout>
+
