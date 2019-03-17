@@ -124,7 +124,7 @@
         android:textSize="18sp" />
 
     <Button
-        android:id="@+id/Btn_open_another_room"
+        android:id="@+id/Btn_open_over_internet"
         android:layout_width="wrap_content"
         android:backgroundTint="@color/colorBox"
         android:layout_height="wrap_content"

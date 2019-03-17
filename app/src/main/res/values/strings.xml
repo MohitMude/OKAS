@@ -22,4 +22,12 @@
     <string name="your_room">Your Room</string>
     <string name="current_status">Current status:</string>
     <string name="change_status">Change status</string>
+    <string name="see_owners_of_room">SEE OWNERS OF ROOM</string>
+    <string name="send_notification_to">SEND NOTIFICATION TO</string>
+    <string name="send_notification">SEND NOTIFICATION</string>
+    <string name="enter_local_part">ENTER LOCAL PART</string>
+    <string name="enter_domain">ENTER DOMAIN</string>
+    <string name="sharedkey">share</string>
+    <string name="sending_message">Sending message</string>
+
 </resources>

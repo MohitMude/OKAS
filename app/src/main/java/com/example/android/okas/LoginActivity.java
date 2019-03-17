@@ -15,6 +15,11 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
+
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -23,15 +28,19 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private Button buttonsignin;
     private TextInputEditText edtxtemail;
     private TextInputEditText edtxtpassword;
+
+  
     private TextView txtviewsignup;
     private FirebaseAuth firebaseAuth;
+     FirebaseDatabase firebaseDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
+        FirebaseApp.initializeApp(this);
         buttonsignin=(Button)findViewById(R.id.Btn_Signin);
+
         edtxtemail=findViewById(R.id.Edtext_loginemail);
         edtxtpassword=findViewById(R.id.Edtext_loginpassword);
         txtviewsignup=(TextView) findViewById(R.id.Text_signup);
@@ -45,12 +54,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
         buttonsignin.setOnClickListener(this);
         txtviewsignup.setOnClickListener(this);
+
+
     }
 
     private void userlogin()
     {
-        String email=(String)edtxtemail.getText().toString().trim();
+        //String email=(String)edtxtLoginLocalPart.getText().toString().trim()+"@"+edtextLoginDomain.getText().toString().trim()+"iitism.com";
         String password=(String)edtxtpassword.getText().toString().trim();
+        String email=(String)edtxtemail.getText().toString().trim();
         if (TextUtils.isEmpty(email))
         {
             Toast.makeText(this, "Email field cannot be blank", Toast.LENGTH_SHORT).show();
