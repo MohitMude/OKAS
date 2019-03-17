@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,41 +7,57 @@
     tools:context=".OpenAnotherRoomActivity"
     android:orientation="vertical">
 
-<LinearLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:layout_gravity="center_horizontal">
-    <NumberPicker
-        android:id="@+id/picker1"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="30dp"></NumberPicker>
-    <NumberPicker
-        android:id="@+id/picker2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"></NumberPicker>
-    <NumberPicker
-        android:id="@+id/picker3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"></NumberPicker>
-    <NumberPicker
-        android:id="@+id/picker4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"></NumberPicker>
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="64dp"
+        android:orientation="horizontal">
+
+        <NumberPicker
+            android:id="@+id/picker1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/null"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="30dp"></NumberPicker>
+
+        <NumberPicker
+            android:id="@+id/picker2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"></NumberPicker>
+
+        <NumberPicker
+            android:id="@+id/picker3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"></NumberPicker>
+
+        <NumberPicker
+            android:id="@+id/picker4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"></NumberPicker>
 
 
-</LinearLayout>
+    </LinearLayout>
 
     <Button
         android:id="@+id/Btn_send_notification_to_owner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Send notification to owner"
-        />
+        android:layout_alignEnd="@+id/null"
+        android:layout_alignBottom="@+id/null"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="99dp"
+        android:layout_marginTop="433dp"
+        android:layout_marginEnd="55dp"
+        android:layout_marginBottom="142dp"
+        android:text="Send notification to owner" />
 
-</LinearLayout>
+</RelativeLayout>

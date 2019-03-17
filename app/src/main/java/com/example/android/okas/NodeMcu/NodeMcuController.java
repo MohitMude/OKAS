@@ -4,6 +4,7 @@ import android.content.SharedPreferences;
 import android.os.AsyncTask;
 
 
+import com.example.android.okas.helper.Logcat;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -12,25 +13,26 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Calendar;
+import java.util.Date;
 
 public class NodeMcuController {
     String onoff;
     String ip;
+    Logcat logcat;
 
     public void StatusChange (String statusSet,String ip) {
         this.onoff = statusSet;
-
+        Date currentTime = Calendar.getInstance().getTime();
+        logcat =new Logcat();
+        logcat.appendLog(currentTime+" : NodeMcu accessed with command "+onoff);
 
         this.ip=ip;
 
-        String serverIP = "192.168.43.69" + onoff;
+        String serverIP = "192.168.43.70" + onoff;
         TaskEsp taskEsp=new TaskEsp(serverIP);
         taskEsp.execute();
     }
-
-
-
-
 
        public class TaskEsp extends AsyncTask<Void, Void, String> {
 

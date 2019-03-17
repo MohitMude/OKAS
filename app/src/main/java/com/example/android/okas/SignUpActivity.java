@@ -3,8 +3,8 @@ package com.example.android.okas;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -37,7 +37,6 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         {
 
             SharedPreferences sharedPreferences=getSharedPreferences("Node_ip",MODE_PRIVATE);
-            sharedPreferences.edit().clear().commit();
             sharedPreferences.edit().putString("ip_key","192.168.43,69");
             finish();
             startActivity(new Intent(this,RoomActivity.class));
