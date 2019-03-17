@@ -136,7 +136,7 @@
         android:layout_marginLeft="102dp"
         android:layout_marginTop="0dp"
         android:layout_marginBottom="-109dp"
-        android:text="@string/open_another_room"
+        android:text="@string/open_over_internet"
         android:textSize="18sp" />
 
 </RelativeLayout>

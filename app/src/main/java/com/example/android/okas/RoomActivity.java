@@ -3,20 +3,19 @@ package com.example.android.okas;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
+
+
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AppCompatActivity;
+
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 
 import android.view.View;
 
-import com.example.android.okas.helper.Logcat;
-import com.google.android.material.navigation.NavigationView;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
@@ -36,8 +35,13 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
+import static com.example.android.okas.R.string.navigation_drawer_open;
+
+
 public class RoomActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener  {
+
+
+        implements NavigationView.OnNavigationItemSelectedListener {
         FirebaseAuth firebaseAuth;
         private Button btnOpenOverInternet;
         private Button btn_Refresh;
@@ -134,7 +138,7 @@ public class RoomActivity extends AppCompatActivity
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+                this, drawer, toolbar, navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
@@ -143,7 +147,7 @@ public class RoomActivity extends AppCompatActivity
 
         rootdatabaseUser.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+            public void onDataChange( DataSnapshot dataSnapshot) {
                 GenericTypeIndicator<ArrayList<Users>> t=new GenericTypeIndicator<ArrayList<Users>>();
                 data=dataSnapshot.getValue(t);
 
@@ -166,7 +170,7 @@ public class RoomActivity extends AppCompatActivity
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
+            public void onCancelled( DatabaseError databaseError) {
 
             }
         });
