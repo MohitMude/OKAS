@@ -1,11 +1,13 @@
 package com.example.android.okas;
 
 import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
+import android.content.SharedPreferences;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -18,12 +20,16 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
-    //private EditText edtxtLoginLocalPart;
-    //private EditText edtextLoginDomain;
-    private EditText edtxtemail;
+
     private Button buttonsignin;
-    private EditText edtxtpassword;
+    private TextInputEditText edtxtemail;
+    private TextInputEditText edtxtpassword;
+
+  
     private TextView txtviewsignup;
     private FirebaseAuth firebaseAuth;
      FirebaseDatabase firebaseDatabase;
@@ -34,12 +40,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_login);
         FirebaseApp.initializeApp(this);
         buttonsignin=(Button)findViewById(R.id.Btn_Signin);
-       // edtxtLoginLocalPart=(EditText)findViewById(R.id.Edtext_login_local_part);
-        //edtextLoginDomain=(EditText)findViewById(R.id.Edtext_login_domain);
-        edtxtemail=(EditText)findViewById(R.id.Edtxt_login_email);
-        edtxtpassword=(EditText)findViewById(R.id.Edtext_loginpassword);
+
+        edtxtemail=findViewById(R.id.Edtext_loginemail);
+        edtxtpassword=findViewById(R.id.Edtext_loginpassword);
         txtviewsignup=(TextView) findViewById(R.id.Text_signup);
         firebaseAuth=FirebaseAuth.getInstance();
+
         if(firebaseAuth.getCurrentUser() != null)
         {
             //start profile activity
@@ -91,6 +97,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
         else if(v==txtviewsignup)
         {
+            SharedPreferences sharedPreferences=getSharedPreferences("Node_ip",MODE_PRIVATE);
+            sharedPreferences.edit().clear().commit();
+            sharedPreferences.edit().putString("ip_key","192.168.43.69");
             finish();
             startActivity(new Intent(this, SignUpActivity.class));
         }

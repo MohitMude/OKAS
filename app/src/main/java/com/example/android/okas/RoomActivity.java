@@ -7,20 +7,25 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
+
 import android.view.View;
-import android.support.design.widget.NavigationView;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+
+import com.example.android.okas.helper.Logcat;
+import com.google.android.material.navigation.NavigationView;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+
 import android.widget.NumberPicker;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.android.okas.NodeMcu.NodeMcuController;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -36,6 +41,13 @@ public class RoomActivity extends AppCompatActivity
         FirebaseAuth firebaseAuth;
         private Button btnOpenOverInternet;
         private Button btn_Refresh;
+        private Button changeStatus;
+        NodeMcuController nodeMcuController;
+        TextView textViewStatus;
+
+
+    String s="/off";
+
         private Button btn_Change_Status;
         private TextView txtViewRoomNo;
         SharedPreferences sharedPreferences;
@@ -47,12 +59,20 @@ public class RoomActivity extends AppCompatActivity
         ArrayList<Users> data;
         DatabaseReference databaseUsers=FirebaseDatabase.getInstance().getReference();
         DatabaseReference rootdatabaseUser=databaseUsers.child("users");
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_room);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        changeStatus=findViewById(R.id.btn_change_status);
+        textViewStatus=findViewById(R.id.txtview_status);
+        nodeMcuController=new NodeMcuController();
+
+
+        SharedPreferences sharedPreferences=getSharedPreferences("Node_ip",MODE_PRIVATE);
+        final String ip=sharedPreferences.getString("ip_key",null);
 
        // email=sharedPreferences.getString("email",null);
         //ip=sharedPreferences.getString("ip",null);
@@ -79,6 +99,7 @@ public class RoomActivity extends AppCompatActivity
             }
         });
 
+
         firebaseAuth=FirebaseAuth.getInstance();
         btn_Refresh=(Button)findViewById(R.id.btn_refresh);
         btn_Refresh.setOnClickListener(new View.OnClickListener() {
@@ -93,6 +114,19 @@ public class RoomActivity extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(),OpenOverInternet.class));
+
+            }
+        });
+
+        changeStatus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if(s=="/off")
+                    s="/on";
+                else
+                    s="/off";
+                nodeMcuController.StatusChange(s,ip);
 
             }
         });

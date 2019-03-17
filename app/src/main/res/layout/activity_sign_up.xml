@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SignUpActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/colorTint">
 
     <TextView
         android:layout_width="wrap_content"
@@ -17,16 +18,23 @@
         android:textColor="#ffffff"
         android:text="@string/register"
         android:textSize="30sp" />
-    <EditText
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/Edtext_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="15dp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_marginTop="50dp"
         android:hint="@string/ENTER_EMAIL"
-
-        />
-    <EditText
+        app:boxCornerRadiusBottomEnd="30dp"
+        >
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/Edtext_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -34,9 +42,17 @@
         android:layout_margin="15dp"
         android:layout_marginTop="20dp"
         android:inputType="textPassword"
-        />
-    <Button
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:boxCornerRadiusBottomEnd="30dp"
+        >
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/Btn_login"
+        android:backgroundTint="@color/colorBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="get registered"
