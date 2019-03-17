@@ -55,6 +55,7 @@
               android:layout_height="wrap_content"
               android:layout_gravity="center_horizontal"
               android:layout_marginStart="127dp"
+              android:layout_marginLeft="127dp"
               android:layout_marginTop="20dp"
               android:textSize="24sp" />
 
@@ -75,7 +76,7 @@
         android:layout_marginTop="20dp"
         android:text="@string/change_status"/>
     <Button
-        android:id="@+id/Btn_open_another_room"
+        android:id="@+id/Btn_open_over_internet"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="18sp"

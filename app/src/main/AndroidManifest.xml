@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".OpenAnotherRoomActivity"></activity>
+        <activity android:name=".OpenOverInternet"></activity>
+        <activity android:name=".OpenAnotherRoomActivity" />
         <activity
             android:name=".RoomActivity"
             android:label="@string/title_activity_room"
@@ -23,16 +24,18 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
+        <activity android:name=".SignUpActivity" />
+
         <receiver android:name=".widget.WidgetProvider">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
-            <meta-data android:name="android.appwidget.provider"
+
+            <meta-data
+                android:name="android.appwidget.provider"
                 android:resource="@xml/widget_provider_info" />
         </receiver>
-        <activity android:name=".SignUpActivity" />
     </application>
 
 </manifest>
